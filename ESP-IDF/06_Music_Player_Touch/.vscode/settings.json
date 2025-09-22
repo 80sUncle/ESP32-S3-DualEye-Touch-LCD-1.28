@@ -17,6 +17,9 @@
     "audio_driver.h": "c",
     "lvgl_eyes.h": "c",
     "mic_speech.h": "c",
-    "esp_codec_dev_defaults.h": "c"
+    "esp_codec_dev_defaults.h": "c",
+    "audio_player.h": "c",
+    "es7210_adc.h": "c",
+    "esp_codec_dev.h": "c"
   }
 }

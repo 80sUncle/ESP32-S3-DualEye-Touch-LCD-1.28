@@ -93,9 +93,25 @@ DECODE_STATUS decode_mp3(HMP3Decoder mp3_decoder, FILE *fp, decode_data *pData, 
 
     if (offset >= 0) {
         COMPILE_3(int starting_unread_bytes = unread_bytes);
-        uint8_t *read_ptr = pInstance->read_ptr + offset; /*!< Data start point */
-        unread_bytes -= offset;
-        LOGI_3("read 0x%p, unread %d", read_ptr, unread_bytes);
+        uint8_t *frame_header = pInstance->read_ptr + offset;
+        // Ensure that the frame header has 4 bytes of complete data (to avoid out-of-bounds)
+        if (unread_bytes - offset < 4) {
+            ESP_LOGI(TAG, "Frame header truncated! Need 4 bytes, got %d", unread_bytes - offset);
+            pInstance->read_ptr += offset + 1; // Skip the incomplete frame header
+            return DECODE_STATUS_NO_DATA_CONTINUE;
+        }
+        // Parse the frame header fields: Bit rate index (bit4-7 of frame_header[2]), sampling rate index (bit2-3 of frame_header[2])
+        uint8_t bitrate_idx = (frame_header[2] >> 4) & 0x0F;
+        uint8_t sample_rate_idx = (frame_header[2] >> 2) & 0x03;
+        // Verify the legitimacy of the field (excluding false synchronization words)
+        if (bitrate_idx == 0 || bitrate_idx == 15 || sample_rate_idx > 2) {
+            ESP_LOGI(TAG, "Invalid frame header: bitrate_idx=%d, sample_rate_idx=%d", 
+                    bitrate_idx, sample_rate_idx);
+            pInstance->read_ptr += offset + 4; // Skip the invalid frame header (4 bytes)
+            return DECODE_STATUS_NO_DATA_CONTINUE;
+        }
+        // Legal frame header, perform decoding
+        uint8_t *read_ptr = frame_header;
         int mp3_dec_err = MP3Decode(mp3_decoder, &read_ptr, (int*)&unread_bytes, reinterpret_cast<int16_t *>(pData->samples), 
 0);
 

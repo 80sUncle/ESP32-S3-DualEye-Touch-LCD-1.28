@@ -26,7 +26,7 @@ dependencies:
   espressif/esp_lcd_touch:
     dependencies: []
     source:
-      path: C:\Users\ad\Desktop\04_SD_gif_show\components\espressif__esp_lcd_touch
+      path: F:\ESP32-S3-DualEye-LCD-1.28-Demo\ESP-IDF\04_SD_gif_show\components\espressif__esp_lcd_touch
       type: local
     version: 1.1.2
   idf:
@@ -46,6 +46,6 @@ direct_dependencies:
 - espressif/esp_lcd_touch
 - idf
 - lvgl/lvgl
-manifest_hash: 0c5fe109c9dbc95be649135b8d7eb36d7d1cf9bd652273c25df38f82c922b39e
+manifest_hash: ee0bad70fee6c337078970687a482f2ea81a6f60036c22f2b4417df329d9f71b
 target: esp32s3
 version: 2.0.0
