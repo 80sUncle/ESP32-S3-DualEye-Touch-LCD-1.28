@@ -1,12 +1,5 @@
 [中文版](./README_CN.md)
 
-English:  (Please watch in full screen to avoid typeset clutter caused by line breaks !!!!!)
-
-(Please watch in full screen to avoid typeset clutter caused by line breaks !!!!!)
-
-(Please watch in full screen to avoid typeset clutter caused by line breaks !!!!!)
-
-
 ### Arduino
 Use under Arduino IDE software:
 - `example`: Store examples (directly compilable).
@@ -19,7 +12,7 @@ Use under Arduino IDE software:
 
 
 ### ESP-IDF
-Used under VSCode software. The samples stored in this folder can be compiled directly. When selecting the project in VSCode, note that you should not select `ESP-IDF` directly, but instead select the project folder *under* `ESP-IDF` (normally named `product-Test`).
+Used under VSCode software. The samples stored in this folder can be compiled directly. When selecting the project in VSCode, note that you should not select `ESP-IDF` directly, but instead select the project folder *under* `ESP-IDF` (normally named `Serial number_Program name`).
 - **Note**: `ESP-IDF` must be version 5.4.0 or above.
 
 
