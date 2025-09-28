@@ -5,6 +5,8 @@ English: 	(Please watch in full screen to avoid typeset clutter caused by line b
 &nbsp;	(Please watch in full screen to avoid typeset clutter caused by line breaks !!!!!)
 
 
+[中文版：](README_CN.md)
+
 
 &nbsp;	Arduino 		    Use under Arduino IDE software
 
