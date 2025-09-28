@@ -5,6 +5,8 @@
 &nbsp;	（请全屏观看，以免换行导致的排版杂乱 ！！！！！）
 
 
+[English edition：](README.md)
+
 
 &nbsp;	Arduino			在 Arduino IDE 软件下使用
 
